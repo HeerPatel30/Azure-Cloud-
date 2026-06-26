@@ -91,3 +91,172 @@ It is like having your own private computer space while also using shared intern
 | Security | Moderate | High | High |
 | Scalability | High | Limited | High |
 | Maintenance | Provider Managed | Organization Managed | Shared Responsibility |
+
+
+
+
+# Virtualization
+
+Virtualization is the process of creating multiple virtual machines on a single physical server using a hypervisor. Each VM operates as an independent computer with its own operating system and applications.
+
+Before virtualization, organizations followed the **"One Server = One Application"** approach.
+
+### For example:
+
+* **Server 1** → Web Application
+* **Server 2** → Database
+* **Server 3** → Mail Server
+
+Most of these servers used only **10–20%** of their CPU and memory, while the remaining resources stayed idle. This resulted in:
+
+* High hardware costs
+* Increased power consumption
+* More physical space required
+* Higher maintenance costs
+* Underutilized resources
+
+Virtualization solves this problem by allowing multiple virtual machines to share the same physical server.
+
+---
+
+# How it Works
+
+A software layer called **Hypervisor** is installed on the physical server.
+
+The Hypervisor creates and manages multiple VMs.
+
+Each VM behaves like a completely independent computer with its own:
+
+* Operating System
+* CPU allocation
+* Memory (RAM)
+* Storage
+* Network configuration
+* Applications
+
+Although all VMs share the same physical hardware, they are isolated from one another.
+
+---
+
+# Hypervisor
+
+A Hypervisor is software that creates, manages, and allocates hardware resources to Virtual Machines.
+
+It acts as a bridge between the physical hardware and the virtual machines.
+
+---
+
+# Types of Hypervisors
+
+## Type 1 Hypervisor (Bare Metal)
+
+A Type 1 Hypervisor runs directly on the physical hardware without requiring a host operating system.
+
+```text
+Applications
+      ↓
+Guest Operating System
+      ↓
+Hypervisor
+      ↓
+Physical Hardware
+```
+
+### Advantages
+
+* High performance
+* Better security
+* Used in production environments
+* Efficient resource utilization
+
+---
+
+## Type 2 Hypervisor (Hosted)
+
+A Type 2 Hypervisor runs on top of an existing operating system.
+
+```text
+Applications
+      ↓
+Guest Operating System
+      ↓
+Hypervisor
+      ↓
+Host Operating System
+      ↓
+Physical Hardware
+```
+
+### Advantages
+
+* Easy to install
+* Suitable for learning and testing
+* Ideal for personal computers
+
+---
+
+# Diagram of Virtualization
+
+```text
+               Physical Server
+       +--------------------------+
+       | CPU | RAM | Storage | NIC|
+       +--------------------------+
+                 |
+            Hypervisor
+                 |
+   +-------------+-------------+
+   |             |             |
++------+      +------+      +------+
+| VM 1 |      | VM 2 |      | VM 3 |
++------+      +------+      +------+
+|Ubuntu|      |Windows|     |CentOS|
+|Apache|      |SQL DB |     |Jenkins|
++------+      +------+      +------+
+```
+
+---
+
+# Advantages of Virtualization
+
+* Better utilization of hardware resources
+* Reduced infrastructure costs
+* Faster server provisioning
+* Easy backup and recovery
+* Improved scalability
+* Isolation between applications
+* Simplified disaster recovery
+* Lower power and cooling costs
+
+---
+
+# Disadvantages of Virtualization
+
+* Initial setup can be complex
+* Performance overhead compared to bare-metal systems
+* Single hardware failure can affect multiple VMs if High Availability is not configured
+* Requires skilled administrators
+
+---
+
+# Real-Life Example
+
+Imagine you own a building with 10 empty apartments.
+
+### Without virtualization:
+
+You build 10 separate buildings for 10 families.
+
+### With virtualization:
+
+You build one large building and divide it into 10 apartments.
+
+Each family has its own private apartment, but everyone shares the same building infrastructure.
+
+Similarly:
+
+* **Building** → Physical Server
+* **Apartments** → Virtual Machines
+* **Building Manager** → Hypervisor
+* **Families** → Applications/Users
+
